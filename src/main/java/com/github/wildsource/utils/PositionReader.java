@@ -22,7 +22,7 @@ public class PositionReader {
 
 	public static List<Coordinate> getCoordinates() {
 		List<Coordinate> coordinates = new ArrayList<Coordinate>();
-		File directory = new File("src/main/resources/coordinates/");
+		File directory = new File("coordinates");
 		File[] coordinatesFiles = directory.listFiles();
 		for (File file : coordinatesFiles) {
 			Coordinate temp;

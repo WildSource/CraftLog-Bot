@@ -34,7 +34,9 @@ public class PositionLogger {
 	}
 
 	private static File createFile(String name) throws IOException {
-		File file = new File("src/main/resources/coordinates/" + name);
+		File directory = new File("coordinates");
+		directory.mkdir();
+		File file = new File("coordinates/" + name);
 		file.createNewFile();
 		return file;
 	}

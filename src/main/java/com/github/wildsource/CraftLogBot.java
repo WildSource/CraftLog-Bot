@@ -11,7 +11,7 @@ import com.github.wildsource.utils.TokenReader;
 public class CraftLogBot {
 
 	public static void main(String[] args) {
-		String token = TokenReader.getToken("src/main/resources/Token");
+		String token = TokenReader.getToken("Token");
 
 		DiscordApi api = new DiscordApiBuilder().setToken(token)
 												.addIntents(Intent.MESSAGE_CONTENT)
@@ -31,8 +31,10 @@ public class CraftLogBot {
 			if (event	.getMessageContent()
 						.equalsIgnoreCase("!help")) {
 				event	.getChannel()
-						.sendMessage("!help :: shows this \n" + "!newPos name x y z :: Creates a new coordinates \n"
-								+ "!ls :: Lists all registered coordinates");
+						.sendMessage("Les commandes commence par ! \n" + "example: !command \n" + "\n"
+								+ "help -> montre les commandes dispo \n"
+								+ "newPos nom x y z -> Cree une coord en remplacent \"nom\" avec le nom de la coord et x y z avec les coords\n"
+								+ "ls -> Liste les coords");
 			}
 		});
 
@@ -43,10 +45,10 @@ public class CraftLogBot {
 						.contains("!newPos")) {
 				if (PositionLogger.createCoordinate(event.getMessageContent())) {
 					event	.getChannel()
-							.sendMessage("Minecraft Coordinates Recorded Successfully !");
+							.sendMessage("Coord enregistrer !");
 				} else {
 					event	.getChannel()
-							.sendMessage("Minecraft Coordinates not Recorded because of error :(");
+							.sendMessage("Coord non enregistrer a cause d'une erreur :(");
 				}
 			}
 		});
